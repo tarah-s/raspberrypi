@@ -21,6 +21,12 @@ num_sounds=${#sounds[*]}
 # osx
 afplay ${sounds[$((RANDOM%num_sounds))]} 
 
-# rpi
+
+# rpi sound through auto ( hdmi )
 # omxplayer ${sounds[$((RANDOM%num_sounds))]}
 
+# rpi forces sound through hdmi
+# omxplayer -o hdmi ${sounds[$((RANDOM%num_sounds))]}
+
+# rpi forces sound through audio jack
+# omxplayer -o local ${sounds[$((RANDOM%num_sounds))]}
