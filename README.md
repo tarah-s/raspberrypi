@@ -7,7 +7,7 @@ Go to Docs for RPI set up
 Python wrapper for firebase
 
 ``` 
-sudo apt-get install python3-pip
+sudo apt-get install python-pip
 ```
 
 
