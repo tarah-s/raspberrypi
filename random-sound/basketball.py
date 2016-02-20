@@ -30,14 +30,14 @@ try:
     while 1:
         if GPIO.input(butPin): # button is released
             pwm.ChangeDutyCycle(dc)
-            GPIO.output(ledPin, GPIO.LOW)
-            
+            GPIO.output(ledPin, GPIO.LOW) 
         else: # button is pressed:
             pwm.ChangeDutyCycle(100-dc)
             subprocess.call('bash play-sound.sh' shell="True")
             scoreCount = scoreCount + 1
             print(scoreCount)
-            r = f.push({'Date': Firebase.ServerValue.TIMESTAMP, 'Score': scoreCount})
+            r = f.push('count/', {'Score': scoreCount})
+            print r
             GPIO.output(ledPin, GPIO.HIGH)
             time.sleep(0.075)
             GPIO.output(ledPin, GPIO.LOW)
