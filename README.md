@@ -3,11 +3,18 @@
 Go to Docs for RPI set up
 
  
+ 
 ### Install PIP 
-Python wrapper for firebase
 
 ``` 
 sudo apt-get install python-pip
+```
+
+
+### Install python-firebase 
+
+``` 
+pip install -e git://github.com/mikexstudios/python-firebase.git#egg=python-firebase
 ```
 
 
