@@ -1,47 +1,31 @@
 # External module imports
+import os
 import RPi.GPIO as GPIO
 import time
 import subprocess
-from firebase import Firebase
-
-f = Firebase('https://')
-
-# Pin Definitons:
-pwmPin = 18 # Broadcom pin 18 (P1 pin 12)
-ledPin = 23 # Broadcom pin 23 (P1 pin 16)
+from firebase import firebase
+ 
+ 
 butPin = 17 # Broadcom pin 17 (P1 pin 11)
-
-dc = 95 # duty cycle (0-100) for PWM pin
-
+ 
 # Pin Setup:
-GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
-GPIO.setup(ledPin, GPIO.OUT) # LED pin set as output
-GPIO.setup(pwmPin, GPIO.OUT) # PWM pin set as output
-pwm = GPIO.PWM(pwmPin, 50)  # Initialize PWM on pwmPin 100Hz frequency
+GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme 
 GPIO.setup(butPin, GPIO.IN, pull_up_down=GPIO.PUD_UP) # Button pin set as input w/ pull-up
-
-# Initial state for LEDs:
-GPIO.output(ledPin, GPIO.LOW)
-pwm.start(dc)
+ 
 scoreCount = 0
 
 print("Here we go! Press CTRL+C to exit")
-try:
-    while 1:
-        if GPIO.input(butPin): # button is released
-            pwm.ChangeDutyCycle(dc)
-            GPIO.output(ledPin, GPIO.LOW) 
-        else: # button is pressed:
-            pwm.ChangeDutyCycle(100-dc)
-            subprocess.call('bash play-sound.sh' shell="True")
-            scoreCount = scoreCount + 1
-            print(scoreCount)
-            r = f.push('count/', {'Score': scoreCount})
-            print r
-            GPIO.output(ledPin, GPIO.HIGH)
-            time.sleep(0.075)
-            GPIO.output(ledPin, GPIO.LOW)
-            time.sleep(0.075)
-except KeyboardInterrupt: # If CTRL+C is pressed, exit cleanly:
-    pwm.stop() # stop PWM
-    GPIO.cleanup() # cleanup all GPIO
+firebase = firebase.FirebaseApplication('https://', None)
+buttonCount = 0 
+
+ 
+while True:
+   input_state = GPIO.input(17)
+   if input_state == False:
+      os.system('date')
+      subprocess.call('bash playsound.sh', shell=True)
+      buttonCount = buttonCount + 1
+      print('Number:',buttonCount)
+      result = firebase.post('/scoreboard',{'Score': buttonCount})
+      print result
+      time.sleep(0.75
