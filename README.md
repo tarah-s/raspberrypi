@@ -21,8 +21,10 @@ sudo pip install python-firebase
 
 
 ### Install MPG321
-you can install mpg321 to play mp3 files with command control of the volume
-Omxplayer seems to cut short mp3 files, prefer to use MPG321 over Omxplayer
+you can install mpg321 to play mp3 files with command control of the volume Omxplayer
+seems to cut short mp3 files, prefer to use MPG321 over Omxplayer. If the sound is
+available you may need to turn the volume up in the playsound.sh file changing
+default 100 to a higher percentage.
 
 ```
 sudo apt-get -y install mpg321
