@@ -29,6 +29,7 @@ sudo apt-get -y install mpg321
 
 
 ### Auto Start scripts
+Launch terminal on startup
 
 Pi 1
 ```
@@ -58,6 +59,23 @@ at the end of the bash rc file add the bash scripts you would like to run
 ```
 sh ~/PATH/script.sh
 
+```
+
+### Structure
+
+start up
+```
+- /home/pi/STARTFOLDER
+  - start.sh
+  - audiofix.sh
+```
+
+program
+```
+- /home/pi/Desktop/PROJECTFOLDER/
+  - SOUNDSFOLDER
+  - playsound.sh
+  - program.py
 ```
 
 
