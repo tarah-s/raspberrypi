@@ -14,7 +14,9 @@ sudo apt-get install python-pip
 ### Install python-firebase
 
 ```
-pip install -e git://github.com/mikexstudios/python-firebase.git#egg=python-firebase
+sudo apt-get install python-dev
+sudo pip install requests
+sudo pip install python-firebase
 ```
 
 
