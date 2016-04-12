@@ -18,16 +18,19 @@ Sounds="/PATH/TO/FILE/announcer_01.mp3
 /PATH/TO/FILE/announcer_08.mp3
 /PATH/TO/FILE/announcer_09.mp3
 /PATH/TO/FILE/announcer_10.mp3
-/PATH/TO/FILE/announcer_11.mp3"
- 
-sounds=($Sounds)      
+/PATH/TO/FILE/announcer_11.mp3
+/PATH/TO/FILE/announcer_12.mp3
+/PATH/TO/FILE/announcer_13.mp3
+/PATH/TO/FILE/announcer_14.mp3"
 
-num_sounds=${#sounds[*]}   
+sounds=($Sounds)
+
+num_sounds=${#sounds[*]}
 
 
 
 # osx test
-afplay ${sounds[$((RANDOM%num_sounds))]} 
+afplay ${sounds[$((RANDOM%num_sounds))]}
 
 
 
