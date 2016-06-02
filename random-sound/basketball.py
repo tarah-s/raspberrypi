@@ -11,7 +11,7 @@ os.system("sudo amixer sset PCM,0 300%")
 
 BatteryTime = # hours
 
-url = 'https://slam-drunk.firebaseio.com/shots.json'
+url = ''
 postdata = { 'time': str(calendar.timegm(time.gmtime())) }
 req = urllib2.Request(url)
 req.add_header('Content-Type','application/json')
